@@ -33,7 +33,7 @@ test('Expand branches defined with globs', async t => {
     {name: '+([0-9])?(.{+([0-9]),x}).x'},
     {name: 'master', channel: 'latest'},
     {name: 'next'},
-    {name: 'pre/{foo,bar}', channel: `\${name.replace(/^pre\\//g, '')}`, prerelease: true},
+    {name: 'pre/{foo,bar}', channel: `\${name.replace(/^pre\\//g, ’’)}`, prerelease: true},
     // Should be ignored as there is no matching branches in the repo
     {name: 'missing'},
     // Should be ignored as the matching branch in the repo is already matched by `/^pre\\/(\\w+)$/gi`

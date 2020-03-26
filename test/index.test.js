@@ -1272,7 +1272,7 @@ test('Allow local releases with "noCi" option', async t => {
   t.not(t.context.log.args[0][0], 'This run was not triggered in a known CI environment, running in dry-run mode.');
   t.not(
     t.context.log.args[0][0],
-    "This run was triggered by a pull request and therefore a new version won't be published."
+    'This run was triggered by a pull request and therefore a new version won’t be published.'
   );
   t.is(verifyConditions.callCount, 1);
   t.is(analyzeCommits.callCount, 1);
@@ -1368,7 +1368,7 @@ test('Returns false if triggered by a PR', async t => {
   );
   t.is(
     t.context.log.args[t.context.log.args.length - 1][0],
-    "This run was triggered by a pull request and therefore a new version won't be published."
+    'This run was triggered by a pull request and therefore a new version won’t be published.'
   );
 });
 
@@ -1569,7 +1569,7 @@ test('Returns false value if triggered on an outdated clone', async t => {
     )
   );
   t.deepEqual(t.context.log.args[t.context.log.args.length - 1], [
-    "The local branch master is behind the remote one, therefore a new version won't be published.",
+    'The local branch master is behind the remote one, therefore a new version won’t be published.',
   ]);
 });
 

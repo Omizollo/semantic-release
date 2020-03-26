@@ -45,7 +45,7 @@ async function run(context, plugins) {
   }
 
   if (isCi && isPr && !options.noCi) {
-    logger.log("This run was triggered by a pull request and therefore a new version won't be published.");
+    logger.log('This run was triggered by a pull request and therefore a new version won’t be published.');
     return false;
   }
 
@@ -77,7 +77,7 @@ async function run(context, plugins) {
     } catch (error) {
       if (!(await isBranchUpToDate(options.repositoryUrl, context.branch.name, {cwd, env}))) {
         logger.log(
-          `The local branch ${context.branch.name} is behind the remote one, therefore a new version won't be published.`
+          `The local branch ${context.branch.name} is behind the remote one, therefore a new version won’t be published.`
         );
         return false;
       }
@@ -238,7 +238,7 @@ async function callFail(context, plugins, err) {
   }
 }
 
-module.exports = async (opts = {}, {cwd = process.cwd(), env = process.env, stdout, stderr} = {}) => {
+module.exports = async (options_ = {}, {cwd = process.cwd(), env = process.env, stdout, stderr} = {}) => {
   const {unhook} = hookStd(
     {silent: false, streams: [process.stdout, process.stderr, stdout, stderr].filter(Boolean)},
     hideSensitive(env)
@@ -253,7 +253,7 @@ module.exports = async (opts = {}, {cwd = process.cwd(), env = process.env, stdo
   context.logger = getLogger(context);
   context.logger.log(`Running ${pkg.name} version ${pkg.version}`);
   try {
-    const {plugins, options} = await getConfig(context, opts);
+    const {plugins, options} = await getConfig(context, options_);
     context.options = options;
     try {
       const result = await run(context, plugins);
